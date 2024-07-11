@@ -1,4 +1,0 @@
-## Move on Sui Introduction
-* This course follows the stories of Sui Frens that are born from SuiFrenGroup and pick up experience over time through various games and activities to evolve into better and stronger versions. In this course, learners are introduced to objects, the fundamental building block of Sui Move, and learn best design patterns and practices for creating, managing and combining objects into more powerful applications.
-
-* This will set the foundation for more advanced courses later that dive into more sophisticated applications leveraging standards on Sui such as Coin and NFT (Kiosk) and application-specific design patterns such as Defi, Gaming, etc.

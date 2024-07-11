@@ -4,7 +4,7 @@
 1. 类型为 u64 的 generation 和 birthdate
 2. 类型为 vector<String> 的 attributes
 3. 类型为 &mut TxContext 的 ctx
-提示：当结构体属性名称和值具有相同名称时，可以使用以下简化形式：
+提示：当结构体字段名称和值具有相同名称时，可以使用以下简化形式：
 
 struct MyStruct {
    value: u64,

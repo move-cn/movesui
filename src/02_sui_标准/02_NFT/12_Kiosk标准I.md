@@ -27,7 +27,7 @@ Kiosk目前仅支持使用SUI代币作为支付方式，但开发者可以部署
 首先需要创建一个kiosk：
 
 ```move
-struct KioskManagement has key {
+public struct KioskManagement has key {
     id: UID,
     owner_cap: KioskOwnerCap,
 }

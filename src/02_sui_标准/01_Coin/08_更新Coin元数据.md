@@ -44,9 +44,9 @@ public entry fun update_icon_url<T>(
 use std::string;
 use sui::url;
 
-struct MYCOIN has drop {}
+public struct MYCOIN has drop {}
 
-struct CoinDataHolder has key {
+public struct CoinDataHolder has key {
     id: UID,
     treasury_cap: TreasuryCap<MYCOIN>,
     metadata: CoinMetadata<MYCOIN>,

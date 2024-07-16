@@ -10,29 +10,29 @@
 在这些不同的方法中，使用对象包装是最简单明了的。一个强大的好处是，对于用户界面和游戏来说，哪些NFT可以添加到另一个NFT中是非常清楚的，例如向英雄NFT添加武器、盔甲等。子NFT还可以用来表示NFT的“特征”，例如背景。
 
 ```move
-struct Background has key, store {
+public struct Background has key, store {
     id: UID,
     type: String,
 }
 
-struct Eyewear has key, store {
+public struct Eyewear has key, store {
     id: UID,
     type: String,
 }
 
-struct Armor has key, store {
+public struct Armor has key, store {
     id: UID,
     defense: u64,
     durability: u64,
 }
 
-struct Weapon has key, store {
+public struct Weapon has key, store {
     id: UID,
     num_uses: u64,
     power: u64,
 }
 
-struct Hero has key {
+public struct Hero has key {
     id: UID,
     background: Background,
     eyewear: Eyewear,
@@ -46,7 +46,7 @@ struct Hero has key {
 ```move
 use std::option::Option;
 
-struct Hero has key {
+public struct Hero has key {
     id: UID,
     background: Background,
     eyewear: Eyewear,

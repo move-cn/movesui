@@ -16,7 +16,7 @@ let some_value = option::some(42);
 ```
 Options 可以用于基本类型和结构体：
 ```move
-struct MyStruct {
+public struct MyStruct {
     value: u64
 }
 let some_struct = option::some(MyStruct{value: 42});

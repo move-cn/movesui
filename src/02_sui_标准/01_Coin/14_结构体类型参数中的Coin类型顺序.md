@@ -3,7 +3,7 @@
 在之前的市场示例中，我们创建了类型为 `Listing<ListedCoin, PaymentCoin>` 的市场列表。然后 `buy_coins` 函数需要 `Listing<ListedCoin, PaymentCoin>` 作为参数，以知道买家想要从哪个列表中购买。
 
 ```move
-struct Listing<phantom ListedCoin, phantom PaymentCoin> has key {
+public struct Listing<phantom ListedCoin, phantom PaymentCoin> has key {
     id: UID,
     seller: address,
     listed_coins: Balance<ListedCoin>,
@@ -24,7 +24,7 @@ public fun buy_coins<ListedCoin, PaymentCoin>(listing: Listing<ListedCoin, Payme
 这是用户尤其是在复杂市场/交易所中常遇到的一个常见问题，因为这些市场/交易所具有许多不同类型的列表，涉及不同的代币对。与我们上面举的 `Listing` 示例不同，在 Sui 的大多数交易所中，代币的顺序实际上对核心对象本身并不重要。
 
 ```move
-struct Market<phantom Coin1, phantom Coin2> has key {
+public struct Market<phantom Coin1, phantom Coin2> has key {
     id: UID,
     reserves_1: Balance<Coin1>,
     reserves_2: Balance<Coin2>,

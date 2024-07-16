@@ -24,9 +24,9 @@ module my_nft::kite {
     use sui::url::Url;
     
     /// One time witness is only instantiated in the init method
-    struct KITE has drop {}
+    public struct KITE has drop {}
     
-    struct KiteNFT has key, store {
+    public struct KiteNFT has key, store {
         id: UID,
         name: String,
         description: String,

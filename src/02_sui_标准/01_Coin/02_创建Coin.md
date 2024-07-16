@@ -13,7 +13,7 @@ public fun balance<T>(coin: &Coin<T>): &Balance<T> {
 
 ```move
 module my_coin::my_coin {
-    struct MYCOIN has drop {}
+    public struct MYCOIN has drop {}
 }
 ```
 

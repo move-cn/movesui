@@ -10,9 +10,9 @@
 ```move
 use nft_protocol::mint_event;
 
-struct Witness has drop {}
+public struct Witness has drop {}
 
-struct Ticket has key {
+public struct Ticket has key {
     id: UID,
     expiration: u64,
 }

@@ -8,7 +8,7 @@ use ob_permissions::witness;
 use std::string::{Self, String};
 
 /// 可用于创建后授权其他操作。至关重要的是，这个结构体不能随意提供给任何合约，因为它充当授权令牌。
-struct Witness has drop {}
+public struct Witness has drop {}
 
 fun init(otw: KITE, ctx: &mut TxContext) {
     let (collection, mint_cap) =

@@ -10,9 +10,9 @@ module my_nft::kite {
     use sui::url::Url;
     
     /// 一次性见证对象只能在 init 方法中实例化。
-    struct KITE has drop {}
+    public struct KITE has drop {}
     
-    struct KiteNFT has key, store {
+    public struct KiteNFT has key, store {
         id: UID,
         name: String,
         description: String,
@@ -43,7 +43,7 @@ use ob_permissions::witness;
 use std::string::{Self, String};
 
 /// 可用于创建后授权其他操作。至关重要的是，这个结构体不能随意提供给任何合约，因为它充当了授权令牌。
-struct Witness has drop {}
+public struct Witness has drop {}
 
 fun init(otw: KITE, ctx: &mut TxContext) {
     let (collection, mint_cap) =

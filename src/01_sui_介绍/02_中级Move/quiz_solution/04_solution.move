@@ -43,7 +43,7 @@ module 0x123::sui_fren {
         attributes: vector<String>,
     }
 
-    public(friend) fun create(generation: u64, birthdate: u64, attributes: vector<String>, ctx: &mut TxContext): SuiFren {
+    public(package) fun create(generation: u64, birthdate: u64, attributes: vector<String>, ctx: &mut TxContext): SuiFren {
         SuiFren {
             id: object::new(ctx),
             generation,
@@ -52,7 +52,7 @@ module 0x123::sui_fren {
         }
     }
 
-    public(friend) fun mint(generation: u64, birthdate: u64, attributes: vector<String>, ctx: &mut TxContext) {
+    public(package) fun mint(generation: u64, birthdate: u64, attributes: vector<String>, ctx: &mut TxContext) {
         let sui_fren = SuiFren {
             id: object::new(ctx),
             generation,

@@ -3,12 +3,12 @@
 如前几节课讨论的那样，Coin 和 Store 对象都具有 store 能力，可以嵌入到其他结构体中（在 Coin 的情况下，因为它是一个对象结构体，所以是“包装”）。
 
 ```move
-struct MyObjectWithBalance has key {
+public struct MyObjectWithBalance has key {
     id: UID,
     balance: Balance<MYCOIN>,
 }
 
-struct MyObjectWithCoin has key {
+public struct MyObjectWithCoin has key {
     id: UID,
     coins: Coin<MYCOIN>,
 }
@@ -18,7 +18,7 @@ struct MyObjectWithCoin has key {
 如果买家只需签署并交易自动完成——他们收到他们购买的代币，而支付的代币从他们的钱包（Coin 对象）中取出，这会更顺畅。
 
 ```move
-struct Listing<phantom CoinType> has key {
+public struct Listing<phantom CoinType> has key {
     id: UID,
     seller: address,
     listed_coins: Balance<CoinType>,

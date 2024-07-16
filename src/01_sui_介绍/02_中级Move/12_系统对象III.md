@@ -15,7 +15,7 @@ public entry fun get_time(clock: &Clock) {
 1. 获取时间戳以进行记录或触发事件。
 
 ```move
-struct TimeEvent has copy, drop {
+public struct TimeEvent has copy, drop {
     timestamp_ms: u64,
 }
     

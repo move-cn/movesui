@@ -77,7 +77,7 @@ fun init(otw: KITE, ctx: &mut TxContext) {
 他们还可以通过调用 `transfer_policy::add_rule` 添加更多规则。
 
 ```move
-struct TransferPolicyHolder<phantom T> has key {
+public struct TransferPolicyHolder<phantom T> has key {
     id: UID,
     transfer_policy: TransferPolicy<T>,
 }

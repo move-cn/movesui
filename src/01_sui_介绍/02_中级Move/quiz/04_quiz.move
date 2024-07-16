@@ -11,7 +11,7 @@ module 0x123::fren_summer {
     use 0x123::sui_fren::{Self, SuiFren};
     use sui::tx_context;
 
-    struct GiftBox has key {
+    public struct GiftBox has key {
         id: UID,
         inner: SuiFren,
     }
@@ -27,9 +27,8 @@ module 0x123::sui_fren {
     use std::vector;
     use sui::event;
 
-    friend 0x123::fren_summer;
-    
-    struct SuiFren has key, store {
+
+    public struct SuiFren has key, store {
         id: UID,
         generation: u64,
         birthdate: u64,
@@ -38,7 +37,7 @@ module 0x123::sui_fren {
 
     // 这里添加新函数
 
-    public(friend) fun mint(generation: u64, birthdate: u64, attributes: vector<String>, ctx: &mut TxContext) {
+    public(package) fun mint(generation: u64, birthdate: u64, attributes: vector<String>, ctx: &mut TxContext) {
         let sui_fren = SuiFren {
             id: object::new(ctx),
             generation,

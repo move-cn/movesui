@@ -8,7 +8,7 @@ use nft_protocol::mint_cap;
 use nft_protocol::mint_event;
 use sui::url;
 
-struct KiteNFT has key {
+public struct KiteNFT has key {
     id: UID,
     url: Url,
     attributes: Attributes,

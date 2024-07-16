@@ -27,7 +27,7 @@ module 0x123::sui_fren {
         id: ID,
     }
 
-    public(friend) fun mint(generation: u64, birthdate: u64, attributes: vector<String>, ctx: &mut TxContext) {
+    public(package) fun mint(generation: u64, birthdate: u64, attributes: vector<String>, ctx: &mut TxContext) {
         let uid = object::new(ctx);
         let id = object::uid_to_inner(&uid);
         let sui_fren = SuiFren {

@@ -30,7 +30,8 @@ fun init(otw: KITE, ctx: &mut TxContext) {
 1. 允许任何人修改集合的属性，但须遵守特定规则（例如由协议定义的特定账户）。在这种情况下，Collection 对象需要是共享对象。
 2. 将 Collection 对象保持为拥有对象，并将其转移到有权限修改集合属性的账户。
 
-无论哪种方式，这都可以在调用添加/更新/删除集合属性的函数时，指定集合对象的可变引用。要在以后添加一组属性（域），我们只需要委托见证对象并再次调用 `collection::add_domain`。
+无论哪种方式，这都可以在调用添加/更新/删除集合属性的函数时，指定集合对象的可变引用。
+要在以后添加一组属性（域），我们只需要委托见证对象并再次调用 `collection::add_domain`。
 
 ```move
 public fun add_collection_attributes_group(collection: &mut Collection<KiteNFT>, attributes: vector<String>) {
@@ -41,7 +42,8 @@ public fun add_collection_attributes_group(collection: &mut Collection<KiteNFT>,
     );
 }
 ```
-由于域可以是任何类型，它可以是单个属性或一组属性——您可以添加向量、VectorMap 或任何其他包含多个属性的容器。请注意，每种类型的域只能添加一次，因为它们在幕后是通过动态字段添加的。
+由于域可以是任何类型，它可以是单个属性或一组属性——您可以添加向量、VectorMap 或任何其他包含多个属性的容器。
+请注意，每种类型的域只能添加一次，因为它们在幕后是通过动态字段添加的。
 要修改现有的域（可以是单个属性或包含属性的容器）：
 
 ```move

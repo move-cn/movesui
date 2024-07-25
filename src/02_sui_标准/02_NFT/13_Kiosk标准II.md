@@ -1,6 +1,7 @@
 ## Kiosk 标准 - 转移策略
 
-Kiosk 有一个非常强大的功能，允许 NFT 创建者制定其 NFT 交易的规则，例如我们在之前课程中看到的版税：转移策略 (TransferPolicy)。在前面的课程中，我们看到购买 NFT 首先会返回一个不能丢弃的 TransferRequest：
+Kiosk 有一个非常强大的功能，允许 NFT 创建者制定其 NFT 交易的规则，例如我们在之前课程中看到的版税：转移策略 (TransferPolicy)。
+在前面的课程中，我们看到购买 NFT 首先会返回一个不能丢弃的 TransferRequest：
 
 ```move
 public fun purchase<T: key + store>(
@@ -42,7 +43,7 @@ use std::string::{Self, String};
 use sui::package;
 
 /// 可用于创建后授权其他操作。至关重要的是，这个结构体不能随意提供给任何合约，因为它充当授权令牌。
-struct Witness has drop {}
+public struct Witness has drop {}
 
 fun init(otw: KITE, ctx: &mut TxContext) {
     let (collection, mint_cap) =

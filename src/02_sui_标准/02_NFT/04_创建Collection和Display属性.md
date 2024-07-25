@@ -1,6 +1,7 @@
 ## 创建Collection和Display属性
 
-使用 OriginByte 标准，开发者可以轻松创建一个集合。第一步是包含上节课提到的 OriginByte 的 `nft_protocol` 和 `permissions` 包。之后，可以使用 `collection` 模块创建一个集合：
+使用 OriginByte 标准，开发者可以轻松创建一个集合。第一步是包含上节课提到的 OriginByte 的 `nft_protocol` 和 `permissions` 包。
+之后，可以使用 `collection` 模块创建一个集合：
 
 ```move
 module my_nft::kite {
@@ -33,7 +34,8 @@ module my_nft::kite {
 1. 见证对象类型。在上述例子中，这是 KITE。
 2. Collection 中的 NFT 类型。我们为此创建了 KiteNFT 类型。将会在接下来的课程中详细讨论这些字段。
 
-`collection::create_with_mint_cap` 返回两个对象——类型为 `Collection<Kite>` 的集合对象和 `mint_cap`，后者可以用于程序化地铸造代币（稍后会讨论）。这两个对象都成为共享对象，因为它们无论如何都不能被修改，只能读取。稍后我们会讨论 `MintCap` 是否可以是一个拥有的对象。
+`collection::create_with_mint_cap` 返回两个对象——类型为 `Collection<Kite>` 的集合对象和 `mint_cap`，
+后者可以用于程序化地铸造代币（稍后会讨论）。这两个对象都成为共享对象，因为它们无论如何都不能被修改，只能读取。稍后我们会讨论 `MintCap` 是否可以是一个拥有的对象。
 
 集合创建后，可以添加如名称/描述等属性：
 

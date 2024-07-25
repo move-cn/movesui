@@ -11,7 +11,7 @@ NFT（非同质化代币）市场是NFT生态系统中的重要枢纽，能够�
 6. 创作者的货币化：艺术家和创作者可以直接在这些平台上将作品变现。
 
 ### Kiosk - Sui的市场标准
-Sui Kiosk是一个对象市场的标准，支持上市和销售。它作为Sui框架的一部分，部署在0x2，拥有许多强大的功能，可以很好地支持NFT交易。
+Sui Kiosk是一个对象市场的标准，支持上市和销售。它作为Sui框架的一部分，部署在`0x2`，拥有许多强大的功能，可以很好地支持NFT交易。
 
 Kiosk模块可以在这里找到，提供以下功能（也适用于非NFT对象）：
 
@@ -43,9 +43,12 @@ public fun create_kiosk(ctx: &mut TxContext) {
 }
 ```
 
-在上述示例中，我们调用了 `kiosk::new` 来创建 kiosk。由于它返回了两个都不可删除的对象，我们需要将它们共享或转移。如果开发者选择转移并保留这些对象，那么这些 kiosks 可以被视为“个人 kiosks”，因为所有列表和购买都需要对 kiosk 和/或所有者权限的可变访问，而这些只有所有者拥有。
+在上述示例中，我们调用了 `kiosk::new` 来创建 kiosk。由于它返回了两个都不可删除的对象，
+我们需要将它们共享或转移。如果开发者选择转移并保留这些对象，那么这些 kiosks 可以被视为“个人 kiosks”，
+因为所有列表和购买都需要对 kiosk 和/或所有者权限的可变访问，而这些只有所有者拥有。
 
-在上述示例中，我们将 kiosk 对象设为共享，并将所有者权限添加到共享的 `KioskManagement` 对象中。这将使 kiosk 无需权限——任何人都可以在其上进行列表，前提是遵守我们在列表函数中设定的任何规则：
+在上述示例中，我们将 kiosk 对象设为共享，并将所有者权限添加到共享的 `KioskManagement` 对象中。
+这将使 kiosk 无需权限——任何人都可以在其上进行列表，前提是遵守我们在列表函数中设定的任何规则：
 
 ```move
 public fun list_on_kiosk<T: key + store>(
@@ -59,7 +62,9 @@ public fun list_on_kiosk<T: key + store>(
 }
 ```
 
-`kiosk::place` 需要一个对 `KioskOwnerCap` 对象的引用，可以从共享的 `kiosk_management` 对象中获取。用户必须调用我们的 `list_on_kiosk` 函数，而不能直接调用 `kiosk::place`，因为他们无法直接访问 `KioskManagement` 中的所有者权限对象。这里还有一个注意事项是，NFT要被列出售，其类型必须具有 `store` 能力。
+`kiosk::place` 需要一个对 `KioskOwnerCap` 对象的引用，可以从共享的 `kiosk_management` 对象中获取。
+用户必须调用我们的 `list_on_kiosk` 函数，而不能直接调用 `kiosk::place`，因为他们无法直接访问 `KioskManagement` 中的所有者权限对象。
+这里还有一个注意事项是，NFT要被列出售，其类型必须具有 `store` 能力。
 
 卖家也可以下架NFT。需要确保调用 `delist` 的人是最初创建该列表的人。这可以通过具有动态字段的共享对象来跟踪。
 
@@ -97,4 +102,5 @@ public fun purchase<T: key + store>(
     (inner, transfer_policy::new_request(id, price, object::id(self)))
 }
 ```
-请注意，尽管这会返回购买的 NFT，但它也会返回一个不能丢弃的 TransferRequest，该请求需要在交易结束前“验证”。我们将在下一课中讨论有关 TransferPolicy 的更多内容。
+请注意，尽管这会返回购买的 NFT，但它也会返回一个不能丢弃的 TransferRequest，该请求需要在交易结束前“验证”。
+我们将在下一课中讨论有关 TransferPolicy 的更多内容。

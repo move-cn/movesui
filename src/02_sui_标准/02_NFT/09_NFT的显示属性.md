@@ -40,7 +40,8 @@ public fun mint_nft(
 }
 ```
 
-在中级对象课程中，我们讨论了 Display 对象及其如何用来指导 Web UI 和钱包向用户显示对象。它还可以允许添加仅用于显示目的的属性，而不会增加实际对象的负担，并且可以用于应用于所有相同类型对象的跨领域更改。
+在中级对象课程中，我们讨论了 Display 对象及其如何用来指导 Web UI 和钱包向用户显示对象。
+它还可以允许添加仅用于显示目的的属性，而不会增加实际对象的负担，并且可以用于应用于所有相同类型对象的跨领域更改。
 我们还可以使用 Display 对象来决定 NFT 对象的显示方式，通过在集合铸造时创建一个 Display 对象来实现：
 
 ```move
@@ -49,7 +50,7 @@ use ob_permissions::witness;
 use std::string::{Self, String};
 
 /// 可用于创建后授权其他操作。至关重要的是，这个结构体不能随意提供给任何合约，因为它充当授权令牌。
-struct Witness has drop {}
+public struct Witness has drop {}
 
 fun init(otw: KITE, ctx: &mut TxContext) {
     let (collection, mint_cap) =
@@ -82,6 +83,8 @@ fun init(otw: KITE, ctx: &mut TxContext) {
     transfer::public_transfer(display, tx_context::sender(ctx));
 }
 ```
-一旦 Display 对象被创建，就会触发一个事件，使 Sui 网络节点能够检测到 Display 对象。随后，每当通过节点 API 获取对象时，其显示属性也会按照指定的格式进行计算，并与对象的其他字段一起返回。
+一旦 Display 对象被创建，就会触发一个事件，使 Sui 网络节点能够检测到 Display 对象。
+随后，每当通过节点 API 获取对象时，其显示属性也会按照指定的格式进行计算，并与对象的其他字段一起返回。
 
-在上面的例子中，我们还将 Display 对象发送给模块部署者，以便在未来需要更新显示属性和格式时进行修改。如果开发者确定显示属性不会改变，他们也可以冻结该对象。如果他们希望自定义逻辑来决定何时可以添加/修改/删除显示属性，他们也可以共享该对象。
+在上面的例子中，我们还将 Display 对象发送给模块部署者，以便在未来需要更新显示属性和格式时进行修改。
+如果开发者确定显示属性不会改变，他们也可以冻结该对象。如果他们希望自定义逻辑来决定何时可以添加/修改/删除显示属性，他们也可以共享该对象。
